@@ -1,0 +1,34 @@
+titles #1
+-
+title_id CHAR(5) PK
+title VARCHAR(40)
+
+departments #2
+-
+dept_no CHAR(4) PK
+dept_name VARCHAR(40)
+
+employees #3
+-
+emp_no INT PK
+emp_title_id CHAR(5) FK -< titles.title_id
+birth_date VARCHAR(10)
+first_name VARCHAR(255)
+last_name VARCHAR(255)
+sex CHAR(1)
+hire_date VARCHAR(10)
+
+dept_emp #4 junction table for a M:M
+-
+emp_no INT PK FK >- employees.emp_no
+dept_no CHAR(4) PK FK >- departments.dept_no
+
+dept_manager #5 junction table for a M:M
+-
+dept_no CHAR(4) PK FK >- departments.dept_no
+emp_no INT PK FK >- employees.emp_no
+
+salaries #6
+-
+emp_no INT PK FK - employees.emp_no
+salary INT
